@@ -1,5 +1,5 @@
 {
-    "name": "jingqi/omnipay-laitpay",
+    "name": "jingqi/omnipay-latipay",
     "type": "library",
     "description": "Latipay gateway for Omnipay payment processing library",
     "license": "MIT",
