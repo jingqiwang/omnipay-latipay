@@ -1,0 +1,23 @@
+{
+    "name": "jingqi/omnipay-laitpay",
+    "type": "library",
+    "description": "Latipay gateway for Omnipay payment processing library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jingqi",
+            "email": "mail@jingqi.me"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Latipay\\": "src/"
+        }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    }
+}
