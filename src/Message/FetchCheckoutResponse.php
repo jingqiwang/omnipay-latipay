@@ -28,4 +28,14 @@ class FetchCheckoutResponse extends AbstractResponse
     {
         return $this->data['status'];
     }
+
+    public function getAmount()
+    {
+        return $this->data['amount'];
+    }
+
+    public function getPaymentMethod()
+    {
+        return $this->data['payment_method'];
+    }
 }
