@@ -49,4 +49,9 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\Latipay\Message\CompletePurchaseRequest', $params);
     }
+
+    public function fetchCheckout(array $params = [])
+    {
+        return $this->createRequest('\Omnipay\Latipay\Message\FetchCheckoutRequest', $params);
+    }
 }
