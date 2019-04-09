@@ -22,6 +22,20 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
         return $this->response['message'] === 'SUCCESS';
     }
 
+    public function getMessage()
+    {
+        return $this->response['message'];
+    }
+
+    public function getLatipayResponse($key = null)
+    {
+        if ($key) {
+            return array_get($this->response, $key);
+        } else {
+            return $this->response;
+        }
+    }
+
     public function isRedirect()
     {
         return true;
