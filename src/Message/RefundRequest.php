@@ -69,7 +69,7 @@ class RefundRequest extends AbstractRequest
         $data = array();
         $data['user_id'] = $this->getUserId();
         $data['order_id'] = $this->getOrderId();
-        $data['refund_amount'] = $this->getAmount();
+        $data['refund_amount'] = $this->getRefundAmount();
         $data['reference'] = $this->getReference();
 
         ksort($data);
