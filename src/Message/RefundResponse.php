@@ -5,7 +5,7 @@ use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\Common\Message\RedirectResponseInterface;
 
-class RefundResponse extends AbstractResponse implements RedirectResponseInterface
+class RefundResponse extends AbstractResponse
 {
     protected $request;
     protected $payload;
@@ -19,5 +19,10 @@ class RefundResponse extends AbstractResponse implements RedirectResponseInterfa
     public function isSuccessful()
     {
         return $this->response['code'] === 0;
+    }
+
+    public function getMessage()
+    {
+        return $this->response['message'];
     }
 }
