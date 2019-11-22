@@ -30,12 +30,12 @@ class FetchCheckoutRequest extends AbstractRequest
 
     public function setKey($value)
     {
-        return $this->setParameter('key', $value);   
+        return $this->setParameter('key', $value);
     }
 
     public function getKey()
     {
-        return $this->getParameter('key');   
+        return $this->getParameter('key');
     }
 
     public function getData()
@@ -54,14 +54,18 @@ class FetchCheckoutRequest extends AbstractRequest
     {
         return $this->sendData($this->getData());
     }
-    
+
     public function sendData($data)
     {
-        $request = $this->httpClient->get($this->endpoint . $this->getMerchantReference(), [], [
-            'query' => $data
-        ]);
-        $response = $request->send();
+        $response = $this->httpClient->request(
+            'GET',
+            $this->endpoint . $this->getMerchantReference() . '?' . http_build_query($data),
+            [
+                'Accept' => 'application/json',
+            ],
+            ''
+        );
 
-        return new FetchCheckoutResponse($this, $response->getBody(true));
+        return new FetchCheckoutResponse($this, $response->getBody()->getContents());
     }
 }

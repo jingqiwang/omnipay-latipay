@@ -28,12 +28,14 @@ class CompletePurchaseRequest extends PurchaseRequest
 
     public function sendData($data)
     {
-        $request = $this->httpClient->get($this->endpoint . $this->getMerchantReference(), [], [
-            'query' => $data
-        ]);
-        $response = $request->send();
+        $response = $this->httpClient->request(
+            'GET',
+            $this->endpoint . $this->getMerchantReference() . '?' . http_build_query($data),
+            ['Accept' => 'application/json'],
+            ''
+        );
 
-        return new CompletePurchaseResponse($this, $response->getBody());
+        return new CompletePurchaseResponse($this, $response->getBody()->getContents());
     }
 
     public function getMerchantReference()
@@ -48,6 +50,6 @@ class CompletePurchaseRequest extends PurchaseRequest
 
     public function getKey()
     {
-        return $this->getParameter('key');   
+        return $this->getParameter('key');
     }
 }

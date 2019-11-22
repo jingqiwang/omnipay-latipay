@@ -29,12 +29,12 @@ class PurchaseRequest extends AbstractRequest
 
     public function setKey($value)
     {
-        return $this->setParameter('key', $value);   
+        return $this->setParameter('key', $value);
     }
 
     public function getKey()
     {
-        return $this->getParameter('key');   
+        return $this->getParameter('key');
     }
 
     public function setPaymentMethod($value)
@@ -164,13 +164,14 @@ class PurchaseRequest extends AbstractRequest
 
     public function sendData($data)
     {
-        $response = $this->httpClient->post(
+        $response = $this->httpClient->request(
+            'POST',
             $this->endpoint,
-            ['Content-Type'=>'application/json'],
+            ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
             json_encode($data)
-        )->send();
+        );
 
-        return new PurchaseResponse($this, $response->getBody());
+        return new PurchaseResponse($this, $response->getBody()->getContents());
     }
 
     protected function sign($params, $secureKey)
@@ -178,7 +179,7 @@ class PurchaseRequest extends AbstractRequest
         $signText = implode('&', array_map(
             function ($key, $value) {
                 return $key . '=' . $value;
-            }, 
+            },
             array_keys($params),
             $params
         ));
