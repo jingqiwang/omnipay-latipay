@@ -32,12 +32,12 @@ class Gateway extends AbstractGateway
 
     public function setKey($value)
     {
-        return $this->setParameter('key', $value);   
+        return $this->setParameter('key', $value);
     }
 
     public function getKey()
     {
-        return $this->getParameter('key');   
+        return $this->getParameter('key');
     }
 
     public function purchase(array $params = [])
